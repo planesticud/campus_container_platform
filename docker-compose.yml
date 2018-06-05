@@ -76,7 +76,7 @@ services:
         - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'git clone https://github.com/udistrital/$CLIENT_CLONE_INFO.git ;cd $CLIENT_CLONE_INFO;git checkout $CLIENT_BRANCH_TARGET;git pull origin $CLIENT_BRANCH_TARGET;npm install;npm update -g @angular/cli;npm update;npm start oat'
+    command: sh -c 'git clone https://github.com/udistrital/$CLIENT_CLONE_INFO.git ;cd $CLIENT_CLONE_INFO;git checkout $CLIENT_BRANCH_TARGET;git pull origin $CLIENT_BRANCH_TARGET;npm install;npm start oat'
     ports:
       - '$CLIENT_PORT:$CLIENT_PORT'
       - '35729:35729'
