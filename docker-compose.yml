@@ -24,7 +24,7 @@ services:
           - ./workspace/angular/schemaspy:/output
       links:
           - postgresdb:database
-  crud:
+  documentoscrud:
     #image: golang:1.8
     build: 
       context: ./bee_build
@@ -33,17 +33,16 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$CRUD_GET_INFO;cd src/github.com/udistrital/$CRUD_GET_INFO;git checkout $CRUD_BRANCH_TARGET;git pull origin $CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$DOCUMENTOS_CRUD_GET_INFO;cd src/github.com/udistrital/$DOCUMENTOS_CRUD_GET_INFO;git checkout $DOCUMENTOS_CRUD_BRANCH_TARGET;git pull origin $DOCUMENTOS_CRUD_BRANCH_TARGET;bee run'
     ports:
-      - '${CRUD_PORT}:${CRUD_PORT}'
+      - '${DOCUMENTOS_CRUD_PORT}:${DOCUMENTOS_CRUD_PORT}'
     volumes:
       - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
       - /etc/passwd:/etc/passwd:ro
     user: "$USER_ID"
     depends_on:
       - postgresdb
-
-  mid:
+  personascrud:
     #image: golang:1.8
     build: 
       context: ./bee_build
@@ -52,15 +51,72 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$MID_GET_INFO;cd src/github.com/udistrital/$MID_GET_INFO;git checkout $MID_BRANCH_TARGET;git pull origin $MID_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$PERSONAS_CRUD_GET_INFO;cd src/github.com/udistrital/$PERSONAS_CRUD_GET_INFO;git checkout $PERSONAS_CRUD_BRANCH_TARGET;git pull origin $PERSONAS_CRUD_BRANCH_TARGET;bee run'
     ports:
-      - '$MID_PORT:$MID_PORT'
+      - '${PERSONAS_CRUD_PORT}:${PERSONAS_CRUD_PORT}'
     volumes:
       - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
       - /etc/passwd:/etc/passwd:ro
     user: "$USER_ID"
     depends_on:
-      - crud
+      - postgresdb
+  ubicacionescrud:
+    #image: golang:1.8
+    build: 
+      context: ./bee_build
+      args:
+          - PROXY=$PROXY
+          - USER_ID=$USER_ID
+    env_file:
+      - .env_secret.env
+    command: sh -c 'go get github.com/udistrital/$UBICACIONES_CRUD_GET_INFO;cd src/github.com/udistrital/$UBICACIONES_CRUD_GET_INFO;git checkout $UBICACIONES_CRUD_BRANCH_TARGET;git pull origin $UBICACIONES_CRUD_BRANCH_TARGET;bee run'
+    ports:
+      - '${UBICACIONES_CRUD_PORT}:${UBICACIONES_CRUD_PORT}'
+    volumes:
+      - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
+      - /etc/passwd:/etc/passwd:ro
+    user: "$USER_ID"
+    depends_on:
+      - postgresdb
+  entecrud:
+    #image: golang:1.8
+    build: 
+      context: ./bee_build
+      args:
+          - PROXY=$PROXY
+          - USER_ID=$USER_ID
+    env_file:
+      - .env_secret.env
+    command: sh -c 'go get github.com/udistrital/$ENTE_CRUD_GET_INFO;cd src/github.com/udistrital/$ENTE_CRUD_GET_INFO;git checkout $ENTE_CRUD_BRANCH_TARGET;git pull origin $ENTE_CRUD_BRANCH_TARGET;bee run'
+    ports:
+      - '${ENTE_CRUD_PORT}:${ENTE_CRUD_PORT}'
+    volumes:
+      - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
+      - /etc/passwd:/etc/passwd:ro
+    user: "$USER_ID"
+    depends_on:
+      - postgresdb
+  campusmid:
+    #image: golang:1.8
+    build: 
+      context: ./bee_build
+      args:
+          - PROXY=$PROXY
+          - USER_ID=$USER_ID
+    env_file:
+      - .env_secret.env
+    command: sh -c 'go get github.com/udistrital/$CAMPUS_MID_GET_INFO;cd src/github.com/udistrital/$CAMPUS_MID_GET_INFO;git checkout $CAMPUS_MID_BRANCH_TARGET;git pull origin $CAMPUS_MID_BRANCH_TARGET;bee run'
+    ports:
+      - '$CAMPUS_MID_PORT:$CAMPUS_MID_PORT'
+    volumes:
+      - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
+      - /etc/passwd:/etc/passwd:ro
+    user: "$USER_ID"
+    depends_on:
+      - ubicacionescrud
+      - personascrud
+      - documentoscrud
+      - entecrud
   apache2:
     image: httpd:2.4-alpine
     ports:
@@ -81,8 +137,10 @@ services:
       - '$CLIENT_PORT:$CLIENT_PORT'
       - '35729:35729'
     depends_on:
-      - crud
-      - mid
+      - ubicacionescrud
+      - personascrud
+      - documentoscrud
+      - campusmid
     volumes:
       - ./workspace/angular:/workspace/angular
     user: "$USER_ID"
