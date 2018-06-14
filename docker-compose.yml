@@ -89,7 +89,7 @@ services:
       - .env_secret.env
     command: sh -c 'go get github.com/udistrital/$ENTE_CRUD_GET_INFO;cd src/github.com/udistrital/$ENTE_CRUD_GET_INFO;git checkout $ENTE_CRUD_BRANCH_TARGET;git pull origin $ENTE_CRUD_BRANCH_TARGET;bee run'
     ports:
-      - '${ENTE_CRUD_PORT}:${ENTE_CRUD_PORT}'
+      - '${ENTE_HTTP_PORT}:${ENTE_HTTP_PORT}'
     volumes:
       - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
       - /etc/passwd:/etc/passwd:ro
