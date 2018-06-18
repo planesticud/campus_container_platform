@@ -113,6 +113,7 @@ services:
       - /etc/passwd:/etc/passwd:ro
     user: "$USER_ID"
     depends_on:
+      - postgresdb
       - ubicacionescrud
       - personascrud
       - documentoscrud
