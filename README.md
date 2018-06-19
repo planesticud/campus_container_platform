@@ -16,7 +16,7 @@ imagenes
 * [postgres:9.5](https://www.postgresql.org/docs/9.5/static/release-9-5.html)
 * [golang:1.8](https://blog.golang.org/go1.8)
 
-El contenedor tiene 
+El contenedor tiene
 
 * [campuscliente](https://github.com/udistrital/campus_cliente)
 * [documentoscrud](https://github.com/udistrital/documentos_crud)
@@ -29,9 +29,9 @@ El contenedor tiene
 
 Por defecto apache corre en el puerto 80 y postgres en el 5432, esto puede cambiarse en el archivo docker-compose.yml
 
-La base de datos se crea a partir de un backup en la carpeta bkup, este debe llamarse backup.backup
+La base de datos se crea a partir de un backup en la carpeta bkup, este debe llamarse bkup.backup
 
-El archivo code.conf es donde se ponen repos y ramas para el clonado del workspace del contenedor. Por otra parte en este archivo tambien se puede definir los nombres de usuario, base de datos y password de la base de datos que el contenedor monta 
+El archivo code.conf es donde se ponen repos y ramas para el clonado del workspace del contenedor. Por otra parte en este archivo tambien se puede definir los nombres de usuario, base de datos y password de la base de datos que el contenedor monta
 
 Las variables de etorno de los apis se pueden generar en un archivo .env_secret.env en la raiz del repositorio
 
