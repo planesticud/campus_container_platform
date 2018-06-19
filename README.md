@@ -1,26 +1,41 @@
-Requisitos:
+## Requisitos:
 
     - Docker
     - Docker compose
-Preparación:
+
+## Preparación:
 
     Agregar al usuario del host al grupo docker
         - Comando: sudo gpasswd -a $USER docker
     Dar permisos de ejecución al archivo start.sh y clean.sh *si lo necesita*
 
-Configuracion:
-    
-    Este contenedor tiene las imagenes de go 1.8 y OAS Generator (Angular 1.6.X). Este deberia funcionar con la arquitectura CRUD api, MID api y cliente. A demas cuenta con una base de datos postgres y apache para comprobar el build del clente.
+## Contenido
+
+    imagenes
+
+    * [postgres:9.5](https://www.postgresql.org/docs/9.5/static/release-9-5.html)
+    * [golang:1.8](https://blog.golang.org/go1.8)
+
+    El contenedor tiene 
+
+    * [campuscliente](https://github.com/udistrital/campus_cliente)
+    * [documentoscrud](https://github.com/udistrital/documentos_crud)
+    * [entecrud](https://github.com/udistrital/ente_crud)
+    * [personascrud](https://github.com/udistrital/personas_crud)
+    * [ubicacionescrud](https://github.com/udistrital/ubicaciones_crud)
+    * [utilsoas](https://github.com/udistrital/utils_oas)
+
+## Configuracion:
 
     Por defecto apache corre en el puerto 80 y postgres en el 5432, esto puede cambiarse en el archivo docker-compose.yml
 
-    La base de datos se crea a partir de un backup en la carpeta bkup, este debe tener la extension .backup
+    La base de datos se crea a partir de un backup en la carpeta bkup, este debe llamarse backup.backup
 
     El archivo code.conf es donde se ponen repos y ramas para el clonado del workspace del contenedor. Por otra parte en este archivo tambien se puede definir los nombres de usuario, base de datos y password de la base de datos que el contenedor monta 
 
     Las variables de etorno de los apis se pueden generar en un archivo .env_secret.env en la raiz del repositorio
 
-    Si se deseaapuntar a alguno de los servicios del contenedor desde los apis no se debe colocar direccion localhost o 127.0.0.1,encambio se debe poner crud, mid, client o postgresdb  
+    Si se desea apuntar a alguno de los servicios del contenedor desde los apis no se debe colocar direccion localhost o 127.0.0.1, encambio se debe poner el respectivo contenedor. 
 
 Posibles Problemas y Soluciones :
 
@@ -35,17 +50,12 @@ Ejecutar EL contenedor:
 
 Ver logs de los servicios y cliente:
 
-    - CLIENT_PORT=$CLIENT_PORT CRUD_PORT=$CRUD_PORT MID_PORT=$MID_PORT docker-compose logs -f client
-    - CLIENT_PORT=$CLIENT_PORT CRUD_PORT=$CRUD_PORT MID_PORT=$MID_PORT docker-compose logs -f mid
-    - CLIENT_PORT=$CLIENT_PORT CRUD_PORT=$CRUD_PORT MID_PORT=$MID_PORT docker-compose logs -f crud
+    se recomienda usar
+    * [DockStation](https://dockstation.io/)
 
-Utilizar las herramientas bee, go, node, npm, generador oas desde el contenedor
 
-    - CLIENT_PORT=$CLIENT_PORT CRUD_PORT=$CRUD_PORT MID_PORT=$MID_PORT docker-compose exec client /bin/bash (abre consola sobre la carpeta angular con las herramientas node, npm, generador oas)
-    - CLIENT_PORT=$CLIENT_PORT CRUD_PORT=$CRUD_PORT MID_PORT=$MID_PORT docker-compose exec mid /bin/bash (abre consola sobre la carpeta go con las herraminetas go , bee)
-    - CLIENT_PORT=$CLIENT_PORT CRUD_PORT=$CRUD_PORT MID_PORT=$MID_PORT docker-compose exec crud /bin/bash (abre consola sobre la carpeta go con las herraminetas go , bee)
-
-    REEMPLAZAR LAS VARIABLES $ POR CUALQUIER PUERTO
+Utilizar las herramientas bee, go, node
+    
 
 bajar los servicios:
 
