@@ -7,6 +7,7 @@ echo "Creacion de carpetas necesarias del contenedor..."
 if [ -f workspace/ ]; then
     echo "Las Carpetas ya fueron creadas..."
 else
+    mkdir -p bkup
     mkdir -p workspace/{angular,go}
     mkdir -p workspace/go/src
     mkdir -p workspace/go/src/github.com
