@@ -23,6 +23,7 @@ El contenedor tiene
 * [entecrud](https://github.com/udistrital/ente_crud)
 * [personascrud](https://github.com/udistrital/personas_crud)
 * [ubicacionescrud](https://github.com/udistrital/ubicaciones_crud)
+* [campusmid](https://github.com/udistrital/campus_mid)
 * [utilsoas](https://github.com/udistrital/utils_oas)
 
 ## Configuracion:
