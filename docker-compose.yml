@@ -33,7 +33,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$PROGRAMA_ACADEMICO_CRUD_GET_INFO;cd src/github.com/udistrital/$PROGRAMA_ACADEMICO_CRUD_GET_INFO;git checkout $PROGRAMA_ACADEMICO_CRUD_BRANCH_TARGET;git pull origin $PROGRAMA_ACADEMICO_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$PROGRAMA_ACADEMICO_CRUD_GET_INFO;cd src/github.com/udistrital/$PROGRAMA_ACADEMICO_CRUD_GET_INFO;git checkout $PROGRAMA_ACADEMICO_CRUD_BRANCH_TARGET;git pull origin $PROGRAMA_ACADEMICO_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${PROGRAMA_ACADEMICO_CRUD_PORT}:${PROGRAMA_ACADEMICO_CRUD_PORT}'
     volumes:
@@ -51,7 +51,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$CORE_CRUD_GET_INFO;cd src/github.com/udistrital/$CORE_CRUD_GET_INFO;git checkout $CORE_CRUD_BRANCH_TARGET;git pull origin $CORE_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$CORE_CRUD_GET_INFO;cd src/github.com/udistrital/$CORE_CRUD_GET_INFO;git checkout $CORE_CRUD_BRANCH_TARGET;git pull origin $CORE_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${CORE_CRUD_PORT}:${CORE_CRUD_PORT}'
     volumes:
@@ -69,7 +69,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$EXPERIENCIA_LABORAL_CRUD_GET_INFO;cd src/github.com/udistrital/$EXPERIENCIA_LABORAL_CRUD_GET_INFO;git checkout $EXPERIENCIA_LABORAL_CRUD_BRANCH_TARGET;git pull origin $EXPERIENCIA_LABORAL_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$EXPERIENCIA_LABORAL_CRUD_GET_INFO;cd src/github.com/udistrital/$EXPERIENCIA_LABORAL_CRUD_GET_INFO;git checkout $EXPERIENCIA_LABORAL_CRUD_BRANCH_TARGET;git pull origin $EXPERIENCIA_LABORAL_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${EXPERIENCIA_LABORAL_CRUD_PORT}:${EXPERIENCIA_LABORAL_CRUD_PORT}'
     volumes:
@@ -87,7 +87,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$FORMACION_ACADEMICA_CRUD_GET_INFO;cd src/github.com/udistrital/$FORMACION_ACADEMICA_CRUD_GET_INFO;git checkout $FORMACION_ACADEMICA_CRUD_BRANCH_TARGET;git pull origin $FORMACION_ACADEMICA_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$FORMACION_ACADEMICA_CRUD_GET_INFO;cd src/github.com/udistrital/$FORMACION_ACADEMICA_CRUD_GET_INFO;git checkout $FORMACION_ACADEMICA_CRUD_BRANCH_TARGET;git pull origin $FORMACION_ACADEMICA_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${FORMACION_ACADEMICA_CRUD_PORT}:${FORMACION_ACADEMICA_CRUD_PORT}'
     volumes:
@@ -105,7 +105,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$ORGANIZACION_CRUD_GET_INFO;cd src/github.com/udistrital/$ORGANIZACION_CRUD_GET_INFO;git checkout $ORGANIZACION_CRUD_BRANCH_TARGET;git pull origin $ORGANIZACION_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$ORGANIZACION_CRUD_GET_INFO;cd src/github.com/udistrital/$ORGANIZACION_CRUD_GET_INFO;git checkout $ORGANIZACION_CRUD_BRANCH_TARGET;git pull origin $ORGANIZACION_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${ORGANIZACION_CRUD_PORT}:${ORGANIZACION_CRUD_PORT}'
     volumes:
@@ -123,7 +123,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$DOCUMENTOS_CRUD_GET_INFO;cd src/github.com/udistrital/$DOCUMENTOS_CRUD_GET_INFO;git checkout $DOCUMENTOS_CRUD_BRANCH_TARGET;git pull origin $DOCUMENTOS_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$DOCUMENTOS_CRUD_GET_INFO;cd src/github.com/udistrital/$DOCUMENTOS_CRUD_GET_INFO;git checkout $DOCUMENTOS_CRUD_BRANCH_TARGET;git pull origin $DOCUMENTOS_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${DOCUMENTOS_CRUD_PORT}:${DOCUMENTOS_CRUD_PORT}'
     volumes:
@@ -141,7 +141,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$PERSONAS_CRUD_GET_INFO;cd src/github.com/udistrital/$PERSONAS_CRUD_GET_INFO;git checkout $PERSONAS_CRUD_BRANCH_TARGET;git pull origin $PERSONAS_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$PERSONAS_CRUD_GET_INFO;cd src/github.com/udistrital/$PERSONAS_CRUD_GET_INFO;git checkout $PERSONAS_CRUD_BRANCH_TARGET;git pull origin $PERSONAS_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${PERSONAS_CRUD_PORT}:${PERSONAS_CRUD_PORT}'
     volumes:
@@ -159,7 +159,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$UBICACIONES_CRUD_GET_INFO;cd src/github.com/udistrital/$UBICACIONES_CRUD_GET_INFO;git checkout $UBICACIONES_CRUD_BRANCH_TARGET;git pull origin $UBICACIONES_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$UBICACIONES_CRUD_GET_INFO;cd src/github.com/udistrital/$UBICACIONES_CRUD_GET_INFO;git checkout $UBICACIONES_CRUD_BRANCH_TARGET;git pull origin $UBICACIONES_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${UBICACIONES_CRUD_PORT}:${UBICACIONES_CRUD_PORT}'
     volumes:
@@ -177,7 +177,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$ENTE_CRUD_GET_INFO;cd src/github.com/udistrital/$ENTE_CRUD_GET_INFO;git checkout $ENTE_CRUD_BRANCH_TARGET;git pull origin $ENTE_CRUD_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$ENTE_CRUD_GET_INFO;cd src/github.com/udistrital/$ENTE_CRUD_GET_INFO;git checkout $ENTE_CRUD_BRANCH_TARGET;git pull origin $ENTE_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '${ENTE_HTTP_PORT}:${ENTE_HTTP_PORT}'
     volumes:
@@ -195,7 +195,7 @@ services:
           - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'go get github.com/udistrital/$CAMPUS_MID_GET_INFO;cd src/github.com/udistrital/$CAMPUS_MID_GET_INFO;git checkout $CAMPUS_MID_BRANCH_TARGET;git pull origin $CAMPUS_MID_BRANCH_TARGET;bee run'
+    command: sh -c 'go get github.com/udistrital/$CAMPUS_MID_GET_INFO;cd src/github.com/udistrital/$CAMPUS_MID_GET_INFO;git checkout $CAMPUS_MID_BRANCH_TARGET;git pull origin $CAMPUS_MID_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
     ports:
       - '$CAMPUS_MID_PORT:$CAMPUS_MID_PORT'
     volumes:
@@ -223,7 +223,7 @@ services:
         - USER_ID=$USER_ID
     env_file:
       - .env_secret.env
-    command: sh -c 'git clone https://github.com/udistrital/$CLIENT_CLONE_INFO.git ;cd $CLIENT_CLONE_INFO;git checkout $CLIENT_BRANCH_TARGET;git pull origin $CLIENT_BRANCH_TARGET;npm install;npm start oat'
+    command: sh -c 'git clone https://github.com/udistrital/$CLIENT_CLONE_INFO.git ;cd $CLIENT_CLONE_INFO;git checkout $CLIENT_BRANCH_TARGET;git pull origin $CLIENT_BRANCH_TARGET;npm install;npm start'
     ports:
       - '$CLIENT_PORT:$CLIENT_PORT'
       - '35729:35729'
