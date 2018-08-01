@@ -60,6 +60,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - programaacademicocrud
   experiencialaboralcrud:
     #image: golang:1.8
     build:
@@ -78,6 +79,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - corecrud
   formacionacademicacrud:
     #image: golang:1.8
     build:
@@ -96,6 +98,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - experiencialaboralcrud
   organizacioncrud:
     #image: golang:1.8
     build:
@@ -114,6 +117,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - formacionacademicacrud
   documentoscrud:
     #image: golang:1.8
     build:
@@ -132,6 +136,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - organizacioncrud
   personascrud:
     #image: golang:1.8
     build:
@@ -150,6 +155,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - documentoscrud
   ubicacionescrud:
     #image: golang:1.8
     build:
@@ -168,6 +174,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - personascrud
   entecrud:
     #image: golang:1.8
     build:
@@ -186,6 +193,7 @@ services:
     user: "$USER_ID"
     depends_on:
       - postgresdb
+      - ubicacionescrud
   campusmid:
     #image: golang:1.8
     build:
@@ -208,6 +216,11 @@ services:
       - personascrud
       - documentoscrud
       - entecrud
+      - organizacioncrud
+      - formacionacademicacrud
+      - experiencialaboralcrud
+      - corecrud
+      - programaacademicocrud
   apache2:
     image: httpd:2.4-alpine
     ports:
@@ -228,9 +241,16 @@ services:
       - '$CLIENT_PORT:$CLIENT_PORT'
       - '35729:35729'
     depends_on:
+      - postgresdb
       - ubicacionescrud
       - personascrud
       - documentoscrud
+      - entecrud
+      - organizacioncrud
+      - formacionacademicacrud
+      - experiencialaboralcrud
+      - corecrud
+      - programaacademicocrud
       - campusmid
     volumes:
       - ./workspace/angular:/workspace/angular
