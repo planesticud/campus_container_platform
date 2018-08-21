@@ -30,6 +30,8 @@ El contenedor tiene
 * [experiencialaboralcrud](https://github.com/udistrital/experiencia_laboral_crud)
 * [corecrud](https://github.com/udistrital/core_crud)
 * [programaacademicocrud](https://github.com/udistrital/programa_academico_crud)
+* [idiomascrud](https://github.com/udistrital/idiomas_crud)
+* [admisionescrud](https://github.com/udistrital/admisiones_crud)
 
 ## Configuracion:
 

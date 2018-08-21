@@ -24,6 +24,42 @@ services:
           - ./workspace/angular/schemaspy:/output
       links:
           - postgresdb:database
+  admisionescrud:
+    #image: golang:1.8
+    build:
+      context: ./bee_build
+      args:
+          - PROXY=$PROXY
+          - USER_ID=$USER_ID
+    env_file:
+      - .env_secret.env
+    command: sh -c 'go get github.com/udistrital/$ADMISIONES_CRUD_GET_INFO;cd src/github.com/udistrital/$ADMISIONES_CRUD_GET_INFO;git checkout $ADMISIONES_CRUD_BRANCH_TARGET;git pull origin $ADMISIONES_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
+    ports:
+      - '${ADMISIONES_CRUD_PORT}:${ADMISIONES_CRUD_PORT}'
+    volumes:
+      - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
+      - /etc/passwd:/etc/passwd:ro
+    user: "$USER_ID"
+    depends_on:
+      - postgresdb
+  idiomascrud:
+    #image: golang:1.8
+    build:
+      context: ./bee_build
+      args:
+          - PROXY=$PROXY
+          - USER_ID=$USER_ID
+    env_file:
+      - .env_secret.env
+    command: sh -c 'go get github.com/udistrital/$IDIOMAS_CRUD_GET_INFO;cd src/github.com/udistrital/$IDIOMAS_CRUD_GET_INFO;git checkout $IDIOMAS_CRUD_BRANCH_TARGET;git pull origin $IDIOMAS_CRUD_BRANCH_TARGET;bee run -downdoc=true -gendoc=true'
+    ports:
+      - '${IDIOMAS_CRUD_PORT}:${IDIOMAS_CRUD_PORT}'
+    volumes:
+      - ./workspace/go/src/github.com/udistrital/:/home/developer/go/src/github.com/udistrital/
+      - /etc/passwd:/etc/passwd:ro
+    user: "$USER_ID"
+    depends_on:
+      - postgresdb
   programaacademicocrud:
     #image: golang:1.8
     build:
