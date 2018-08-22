@@ -257,6 +257,8 @@ services:
       - experiencialaboralcrud
       - corecrud
       - programaacademicocrud
+      - idiomascrud
+      - admisionescrud
   apache2:
     image: httpd:2.4-alpine
     ports:
@@ -287,6 +289,8 @@ services:
       - experiencialaboralcrud
       - corecrud
       - programaacademicocrud
+      - idiomascrud
+      - admisionescrud
       - campusmid
     volumes:
       - ./workspace/angular:/workspace/angular
